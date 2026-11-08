@@ -1,0 +1,16 @@
+---
+import ResultsBand from '@/components/customers/results-band.astro';
+import StoryGrid from '@/components/customers/story-grid.astro';
+import Cta from '@/components/shared/cta.astro';
+import PageHero from '@/components/shared/page-hero.astro';
+import { customersPage as page } from '@/data/pages';
+import Layout from '@/layouts/layout.astro';
+import { pageTitle } from '@/utils/generate-meta-data';
+---
+
+<Layout title={pageTitle(page.meta.title)} image="/images/og/customers.jpg" description={page.meta.description}>
+  <PageHero lines={page.hero.lines} intro={page.hero.intro} />
+  <StoryGrid />
+  <ResultsBand />
+  <Cta title={page.cta.title} body={page.cta.body} />
+</Layout>

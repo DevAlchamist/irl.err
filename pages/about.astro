@@ -1,0 +1,18 @@
+---
+import AboutHero from '@/components/about/about-hero.astro';
+import Roles from '@/components/about/roles.astro';
+import Team from '@/components/about/team.astro';
+import Timeline from '@/components/about/timeline.astro';
+import Values from '@/components/about/values.astro';
+import { aboutPage as page } from '@/data/pages';
+import Layout from '@/layouts/layout.astro';
+import { pageTitle } from '@/utils/generate-meta-data';
+---
+
+<Layout title={pageTitle(page.meta.title)} image="/images/og/about.jpg" description={page.meta.description}>
+  <AboutHero />
+  <Timeline />
+  <Values />
+  <Team />
+  <Roles />
+</Layout>

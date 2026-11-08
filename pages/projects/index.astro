@@ -1,0 +1,20 @@
+---
+import FeaturedPost from '@/components/journal/featured-post.astro';
+import PostList from '@/components/journal/post-list.astro';
+import PageHero from '@/components/shared/page-hero.astro';
+import { projectsPage as page } from '@/data/pages';
+import Layout from '@/layouts/layout.astro';
+import { getPosts } from '@/utils/collections';
+import { pageTitle } from '@/utils/generate-meta-data';
+
+const posts = await getPosts();
+const featured = posts.find((post) => post.data.featured) ?? posts[0];
+const rest = posts.filter((post) => post.id !== featured.id);
+---
+
+<Layout title={pageTitle(page.meta.title)} image="/images/og/journal.jpg" description={page.meta.description}>
+  <PageHero lines={page.hero.lines} intro={page.hero.intro} />
+  <FeaturedPost post={featured} />
+  <PostList posts={rest} />
+</Layout>
+
